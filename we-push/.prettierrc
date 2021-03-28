@@ -1,4 +1,5 @@
 {
   "trailingComma": "none",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "arrowParens": "avoid"
 }
