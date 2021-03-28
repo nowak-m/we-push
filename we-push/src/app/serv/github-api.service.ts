@@ -31,54 +31,60 @@ export interface GithubPushEvent extends GithubEvent {
   };
 }
 
+const convertInterval = (intervalInSeconds: string): number =>
+  +intervalInSeconds * 1000;
+
 @Injectable({
   providedIn: 'root'
 })
 export class GithubApiService {
-  private eventsUrl = `https://api.github.com/events`;
+  events$: Observable<GithubEvent[]>;
+
+  pushEvents$: Observable<GithubPushEvent[]>;
+
+  private readonly eventsUrl = `https://api.github.com/events`;
 
   private apiAvailable = true;
 
   private apiInterval = '';
 
-  private convertInterval(intervalInSeconds: string): number {
-    return +intervalInSeconds * 1000;
-  }
+  constructor(public http: HttpClient) {
+    this.events$ = of('').pipe(
+      switchMap(() => {
+        if (this.apiAvailable) {
+          this.apiAvailable = false;
 
-  events$: Observable<GithubEvent[]> = of('').pipe(
-    switchMap(() => {
-      if (this.apiAvailable) {
-        this.apiAvailable = false;
-        return this.http
-          .get<GithubEvent[]>(this.eventsUrl, {
-            observe: 'response'
-          })
-          .pipe(
-            map((response) => {
-              this.apiInterval = response.headers.get('X-Token') || '60';
-              return response.body || ([] as GithubEvent[]);
-            }),
-            tap(() => {
-              setTimeout(() => {
-                this.apiAvailable = true;
-              }, this.convertInterval(this.apiInterval));
+          return this.http
+            .get<GithubEvent[]>(this.eventsUrl, {
+              observe: 'response'
             })
+            .pipe(
+              map(response => {
+                this.apiInterval = response.headers.get('X-Token') || '60';
+
+                return response.body || ([] as GithubEvent[]);
+              }),
+              tap(() => {
+                setTimeout(() => {
+                  this.apiAvailable = true;
+                }, convertInterval(this.apiInterval));
+              })
+            );
+        } else {
+          console.error(
+            `Github API is locked for ${this.apiInterval} seconds, try again later.`
           );
-      } else {
-        console.error(
-          `Github API is locked for ${this.apiInterval} seconds, try again later.`
-        );
-        return of([] as GithubEvent[]);
-      }
-    })
-  );
 
-  pushEvents$: Observable<GithubPushEvent[]> = this.events$.pipe(
-    map(
-      (events) =>
-        events.filter((e) => e.type == 'PushEvent') as GithubPushEvent[]
-    )
-  );
+          return of([] as GithubEvent[]);
+        }
+      })
+    );
 
-  constructor(public http: HttpClient) {}
+    this.pushEvents$ = this.events$.pipe(
+      map(
+        events =>
+          events.filter(e => e.type === 'PushEvent') as GithubPushEvent[]
+      )
+    );
+  }
 }
