@@ -1,0 +1,13 @@
+@import "../css/variables.scss";
+
+app-header {
+  height: $headerHeight;
+}
+
+app-footer {
+  height: $footerHeight;
+}
+
+#outlet-wrapper {
+  height: calc(100% - #{$headerHeight} - #{$footerHeight});
+}

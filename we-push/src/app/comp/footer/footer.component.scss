@@ -1,0 +1,11 @@
+@import "../../../css/variables.scss";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 0 1rem;
+
+  background-color: $primaryColor;
+}
