@@ -1,0 +1,19 @@
+<div id="attribution-container">
+  <ng-container
+    *ngFor="let section of sections; let i = index; trackBy: identifySection"
+  >
+    <h1>{{ section }}</h1>
+    <ng-container
+      *ngFor="
+        let attribution of attributionGroups[i];
+        trackBy: identifyAttribution
+      "
+    >
+      <app-attribution-view [data]="attribution"></app-attribution-view>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </ng-container>
+</div>
+<div class="app-dialog-actions">
+  <button mat-raised-button (click)="onClick()">Close</button>
+</div>

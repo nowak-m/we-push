@@ -1,0 +1,15 @@
+@import "../../../css/variables.scss";
+@import "../../../css/dialog.scss";
+
+$attributionContainerHeight: calc(
+  100% - #{$appDialogActionsHeight} - 2 * #{$cardMargin}
+);
+
+#attribution-container {
+  height: $attributionContainerHeight;
+  overflow-y: scroll;
+}
+
+mat-divider {
+  margin: 1rem 0;
+}

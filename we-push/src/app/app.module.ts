@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,8 @@ import { HeaderComponent } from './comp/header/header.component';
 import { FooterComponent } from './comp/footer/footer.component';
 import { WelcomeDialogComponent } from './comp/welcome-dialog/welcome-dialog.component';
 import { EventViewComponent } from './comp/event-view/event-view.component';
+import { AttributionsComponent } from './comp/attributions/attributions.component';
+import { AttributionViewComponent } from './comp/attribution-view/attribution-view.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { EventViewComponent } from './comp/event-view/event-view.component';
     HeaderComponent,
     FooterComponent,
     WelcomeDialogComponent,
-    EventViewComponent
+    EventViewComponent,
+    AttributionsComponent,
+    AttributionViewComponent
   ],
   imports: [
     BrowserModule,
@@ -35,10 +40,11 @@ import { EventViewComponent } from './comp/event-view/event-view.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [WelcomeDialogComponent]
+  entryComponents: [WelcomeDialogComponent, AttributionsComponent]
 })
 export class AppModule {}
