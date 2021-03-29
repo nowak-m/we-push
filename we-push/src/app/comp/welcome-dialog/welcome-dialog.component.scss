@@ -1,14 +1,8 @@
 @import "../../../css/variables.scss";
+@import "../../../css/dialog.scss";
 
 span {
   color: $primaryColor;
-}
-
-.dialog-actions {
-  display: flex;
-  justify-content: flex-end;
-
-  margin-top: 2rem;
 }
 
 p {
