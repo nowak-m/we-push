@@ -1,0 +1,18 @@
+@import "../../../css/variables.scss";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 0 1rem;
+}
+
+#logo {
+  color: #43a047;
+  font-family: "Lato";
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}

@@ -1,0 +1,16 @@
+@import "../../../css/variables.scss";
+
+span {
+  color: $primaryColor;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 2rem;
+}
+
+p {
+  font-weight: 500;
+}

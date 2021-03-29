@@ -1,1 +1,5 @@
-<router-outlet></router-outlet>
+<app-header class="mat-elevation-z8"></app-header>
+<div id="outlet-wrapper">
+  <router-outlet *ngIf="displayRouter"></router-outlet>
+</div>
+<app-footer></app-footer>
