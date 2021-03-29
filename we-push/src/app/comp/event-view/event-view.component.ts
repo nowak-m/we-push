@@ -39,4 +39,8 @@ export class EventViewComponent implements OnInit {
     );
     this.outro = this.motivationService.getOutro();
   }
+
+  identify(index: number, item: string) {
+    return item;
+  }
 }

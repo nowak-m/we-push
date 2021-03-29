@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionComponentData } from '../action/action.component';
 
@@ -7,7 +7,7 @@ import { ActionComponentData } from '../action/action.component';
   templateUrl: './controls.component.html',
   styleUrls: ['./controls.component.scss']
 })
-export class ControlsComponent implements OnInit {
+export class ControlsComponent {
   actions: ActionComponentData[] = [
     {
       id: 'procrastinate',
@@ -23,14 +23,18 @@ export class ControlsComponent implements OnInit {
     }
   ];
 
+  constructor(public router: Router) {}
+
   onSelect(action: string) {
     switch (action) {
       case 'procrastinate':
-        this.router.navigate(['display']);
+        this.router.navigate(['display']).catch(error => console.error(error));
+        break;
+      default:
     }
   }
 
-  constructor(public router: Router) {}
-
-  ngOnInit(): void {}
+  identify(index: number, item: ActionComponentData) {
+    return item.id;
+  }
 }
