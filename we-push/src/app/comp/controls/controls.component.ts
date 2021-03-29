@@ -24,8 +24,8 @@ export class ControlsComponent implements OnInit {
   ];
 
   onSelect(action: string) {
-    switch(action) {
-      case "procrastinate":
+    switch (action) {
+      case 'procrastinate':
         this.router.navigate(['display']);
     }
   }
