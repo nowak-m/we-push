@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionComponentData } from '../action/action.component';
 
+const identify = (index: number, item: ActionComponentData) => item.id;
+
 @Component({
   selector: 'app-controls',
   templateUrl: './controls.component.html',
@@ -23,7 +25,11 @@ export class ControlsComponent {
     }
   ];
 
-  constructor(public router: Router) {}
+  identify;
+
+  constructor(public router: Router) {
+    this.identify = identify;
+  }
 
   onSelect(action: string) {
     switch (action) {
@@ -32,9 +38,5 @@ export class ControlsComponent {
         break;
       default:
     }
-  }
-
-  identify(index: number, item: ActionComponentData) {
-    return item.id;
   }
 }

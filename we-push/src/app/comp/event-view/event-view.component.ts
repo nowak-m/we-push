@@ -8,6 +8,8 @@ export interface EventViewData {
   commits: number;
 }
 
+const identify = (index: number, item: string) => item;
+
 @Component({
   selector: 'app-event-view',
   templateUrl: './event-view.component.html',
@@ -28,7 +30,11 @@ export class EventViewComponent implements OnInit {
 
   summary: string[] = [];
 
-  constructor(public motivationService: MotivationService) {}
+  identify;
+
+  constructor(public motivationService: MotivationService) {
+    this.identify = identify;
+  }
 
   ngOnInit(): void {
     this.intro = this.motivationService.getIntro();
@@ -38,9 +44,5 @@ export class EventViewComponent implements OnInit {
       this.data.commits
     );
     this.outro = this.motivationService.getOutro();
-  }
-
-  identify(index: number, item: string) {
-    return item;
   }
 }
