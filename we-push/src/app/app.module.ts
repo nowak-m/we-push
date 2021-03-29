@@ -10,9 +10,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventDisplayComponent } from './comp/event-display/event-display.component';
 import { ControlsComponent } from './comp/controls/controls.component';
+import { ActionComponent } from './comp/action/action.component';
 
 @NgModule({
-  declarations: [AppComponent, EventDisplayComponent, ControlsComponent],
+  declarations: [
+    AppComponent,
+    EventDisplayComponent,
+    ControlsComponent,
+    ActionComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
