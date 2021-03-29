@@ -4,7 +4,7 @@
     <div class="summary">
       <img class="avatar" [src]="data.avatar" alt="" />
       <div class="activity">
-        <ng-container *ngFor="let text of summary">
+        <ng-container *ngFor="let text of summary; trackBy: identify">
           <p [innerHtml]="text"></p>
         </ng-container>
       </div>

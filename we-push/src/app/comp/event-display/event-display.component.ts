@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GithubApiService } from 'src/app/serv/github-api.service';
 
 @Component({
@@ -6,8 +6,6 @@ import { GithubApiService } from 'src/app/serv/github-api.service';
   templateUrl: './event-display.component.html',
   styleUrls: ['./event-display.component.scss']
 })
-export class EventDisplayComponent implements OnInit {
+export class EventDisplayComponent {
   constructor(public githubService: GithubApiService) {}
-
-  ngOnInit(): void {}
 }

@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AttributionViewData } from '../attribution-view/attribution-view.component';
 
+const identifyAttribution = (index: number, item: AttributionViewData) =>
+  item.name;
+
+const identifySection = (index: number, item: string) => item;
+
 @Component({
   selector: 'app-attributions',
   templateUrl: './attributions.component.html',
@@ -24,7 +29,15 @@ export class AttributionsComponent {
 
   attributionGroups: AttributionViewData[][] = [];
 
+  identifyAttribution;
+
+  identifySection;
+
   constructor(public dialogRef: MatDialogRef<AttributionsComponent>) {
+    this.identifyAttribution = identifyAttribution;
+
+    this.identifySection = identifySection;
+
     this.attributions.forEach(a => {
       if (this.attributionMap.has(a.section)) {
         this.attributionMap.get(a.section)?.push(a);
@@ -38,14 +51,6 @@ export class AttributionsComponent {
     this.sections.forEach(s => {
       this.attributionGroups.push(this.attributionMap.get(s) || []);
     });
-  }
-
-  identifyAttribution(index: number, item: AttributionViewData) {
-    return item.name;
-  }
-
-  identifySection(index: number, item: string) {
-    return item;
   }
 
   getAttributions(section: string): AttributionViewData[] {
