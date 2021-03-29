@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActionComponentData } from '../action/action.component';
 
 @Component({
@@ -22,7 +23,14 @@ export class ControlsComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  onSelect(action: string) {
+    switch(action) {
+      case "procrastinate":
+        this.router.navigate(['display']);
+    }
+  }
+
+  constructor(public router: Router) {}
 
   ngOnInit(): void {}
 }
