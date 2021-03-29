@@ -15,6 +15,7 @@ import { ActionComponent } from './comp/action/action.component';
 import { HeaderComponent } from './comp/header/header.component';
 import { FooterComponent } from './comp/footer/footer.component';
 import { WelcomeDialogComponent } from './comp/welcome-dialog/welcome-dialog.component';
+import { EventViewComponent } from './comp/event-view/event-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { WelcomeDialogComponent } from './comp/welcome-dialog/welcome-dialog.com
     ActionComponent,
     HeaderComponent,
     FooterComponent,
-    WelcomeDialogComponent
+    WelcomeDialogComponent,
+    EventViewComponent
   ],
   imports: [
     BrowserModule,
