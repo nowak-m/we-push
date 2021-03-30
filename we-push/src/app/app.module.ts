@@ -20,8 +20,8 @@ import { EventViewComponent } from './comp/event-view/event-view.component';
 import { AttributionsComponent } from './comp/attributions/attributions.component';
 import { AttributionViewComponent } from './comp/attribution-view/attribution-view.component';
 
-import { GithubEventsHttpService } from './serv/github-events-http.service';
 import { MotivationLocalService } from './serv/motivation-local.service';
+import { GithubPushEventsHttpService } from './serv/github-push-events-http.service';
 
 @NgModule({
   declarations: [
@@ -48,8 +48,8 @@ import { MotivationLocalService } from './serv/motivation-local.service';
   ],
   providers: [
     {
-      provide: 'GithubApiService',
-      useClass: GithubEventsHttpService
+      provide: 'PushEventsService',
+      useClass: GithubPushEventsHttpService
     },
     {
       provide: 'MotivationService',

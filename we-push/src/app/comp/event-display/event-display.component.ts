@@ -40,11 +40,11 @@ export class EventDisplayComponent {
   event$: Observable<EventViewDataWrapper>;
 
   constructor(
-    @Inject('GithubApiService') public githubService: PushEventsService,
+    @Inject('PushEventsService') public pushEventsService: PushEventsService,
     @Inject('MotivationService') public motivationService: MotivationService,
     public router: Router
   ) {
-    this.event$ = this.githubService.pushEvents$.pipe(
+    this.event$ = this.pushEventsService.events$.pipe(
       map(pushEvents =>
         pushEvents.map(event =>
           viewDataTransformer(event, this.motivationService)
