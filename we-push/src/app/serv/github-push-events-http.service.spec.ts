@@ -17,10 +17,10 @@ describe('GithubPushEventsHttpService', () => {
           useValue: {
             events$: of([
               {
-                type: "PushEvent"
+                type: 'PushEvent'
               },
               {
-                type: "OtherEvent"
+                type: 'OtherEvent'
               }
             ] as GithubEvent[])
           }
@@ -37,8 +37,8 @@ describe('GithubPushEventsHttpService', () => {
   it('should filter PushEvents', fakeAsync(() => {
     service.events$.pipe(take(1)).subscribe(events => {
       events.forEach(event => {
-        expect(event.type).toEqual("PushEvent");
-      })
-    })
-  }))
+        expect(event.type).toEqual('PushEvent');
+      });
+    });
+  }));
 });
