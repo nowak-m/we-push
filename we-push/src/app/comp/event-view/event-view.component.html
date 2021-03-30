@@ -1,15 +1,15 @@
 <mat-card class="action-card mat-elevation-z8">
   <mat-card-content>
-    <h1>{{ intro }}</h1>
+    <h1>{{ data.intro }}</h1>
     <div class="summary">
       <img class="avatar" [src]="data.avatar" alt="" />
       <div class="activity">
-        <ng-container *ngFor="let text of summary; trackBy: identify">
+        <ng-container *ngFor="let text of data.summary; trackBy: identify">
           <p [innerHtml]="text"></p>
         </ng-container>
       </div>
     </div>
-    <h1>{{ outro }}</h1>
+    <h1>{{ data.outro }}</h1>
   </mat-card-content>
   <mat-card-actions>
     <button class="action-button" mat-raised-button>Go to Github</button>
