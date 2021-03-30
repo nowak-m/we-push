@@ -1,11 +1,10 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { MotivationService } from 'src/app/serv/motivation.service';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
-export interface EventViewData {
+export interface PushEventViewData {
   avatar: string;
-  user: string;
-  repo: string;
-  commits: number;
+  intro: string;
+  summary: string[];
+  outro: string;
 }
 
 const identify = (index: number, item: string) => item;
@@ -16,33 +15,21 @@ const identify = (index: number, item: string) => item;
   styleUrls: ['./event-view.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class EventViewComponent implements OnInit {
-  @Input() data: EventViewData = {
+export class EventViewComponent {
+  @Input() data: PushEventViewData = {
     avatar: 'https://octodex.github.com/images/original.png',
-    user: 'octocat',
-    repo: 'https://github.com/angular',
-    commits: 5
+    intro: 'Hello there,',
+    summary: [
+      'user <span>octocat</span>',
+      'has just pushed <span>2</span> commits',
+      'into <span>angular</span> repo'
+    ],
+    outro: 'We hope you had a productive day, too!'
   };
-
-  intro = '';
-
-  outro = '';
-
-  summary: string[] = [];
 
   identify;
 
-  constructor(public motivationService: MotivationService) {
+  constructor() {
     this.identify = identify;
-  }
-
-  ngOnInit(): void {
-    this.intro = this.motivationService.getIntro();
-    this.summary = this.motivationService.getSummary(
-      this.data.user,
-      this.data.repo,
-      this.data.commits
-    );
-    this.outro = this.motivationService.getOutro();
   }
 }

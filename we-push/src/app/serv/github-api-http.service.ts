@@ -2,34 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-
-export interface GithubEventActor {
-  avatar_url: string;
-  display_login: string;
-  gravatar_id: string;
-}
-
-export interface GithubRepo {
-  id: number;
-  name: string;
-  url: string;
-}
-
-export interface GithubEvent {
-  id: string;
-  type: string;
-  actor: GithubEventActor;
-  repo: GithubRepo;
-}
-
-export interface GithubPushEvent extends GithubEvent {
-  payload: {
-    commits: {
-      message: string;
-    }[];
-    ref: string;
-  };
-}
+import {
+  GithubApiService,
+  GithubEvent,
+  GithubPushEvent
+} from '../shared/github-api-service.model';
 
 const convertInterval = (intervalInSeconds: string): number =>
   +intervalInSeconds * 1000;
@@ -37,7 +14,7 @@ const convertInterval = (intervalInSeconds: string): number =>
 @Injectable({
   providedIn: 'root'
 })
-export class GithubApiService {
+export class GithubApiHttpService implements GithubApiService {
   events$: Observable<GithubEvent[]>;
 
   pushEvents$: Observable<GithubPushEvent[]>;

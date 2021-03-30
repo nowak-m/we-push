@@ -1,12 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of, timer } from 'rxjs';
-import { filter, finalize, map, switchMap, take, tap } from 'rxjs/operators';
-import { GithubApiService } from 'src/app/serv/github-api.service';
-import { EventViewData } from '../event-view/event-view.component';
+import { Observable, timer } from 'rxjs';
+import { filter, finalize, map, switchMap, take } from 'rxjs/operators';
+import {
+  GithubApiService,
+  GithubPushEvent
+} from 'src/app/shared/github-api-service.model';
+import { MotivationService } from 'src/app/shared/motivation-service.model';
+import { PushEventViewData } from '../event-view/event-view.component';
+
+const viewDataTransformer = (
+  event: GithubPushEvent,
+  motivationService: MotivationService
+): PushEventViewData => {
+  const viewData: PushEventViewData = {
+    avatar: event.actor.avatar_url,
+    intro: motivationService.getIntro(),
+    summary: motivationService.getSummary(
+      event.actor.display_login,
+      event.repo.url.split('/').pop() as string,
+      event.payload.commits.length
+    ),
+    outro: motivationService.getOutro()
+  };
+
+  return viewData;
+};
 
 interface EventViewDataWrapper {
-  data: EventViewData;
+  data: PushEventViewData;
   sequence: number;
 }
 @Component({
@@ -17,26 +39,16 @@ interface EventViewDataWrapper {
 export class EventDisplayComponent {
   event$: Observable<EventViewDataWrapper>;
 
-  constructor(public githubService: GithubApiService, public router: Router) {
+  constructor(
+    @Inject('GithubApiService') public githubService: GithubApiService,
+    @Inject('MotivationService') public motivationService: MotivationService,
+    public router: Router
+  ) {
     this.event$ = this.githubService.pushEvents$.pipe(
       map(pushEvents =>
-        pushEvents.map(event => {
-          const eventData: EventViewData = {
-            avatar: event.actor.avatar_url,
-            user: event.actor.display_login,
-            repo: event.repo.url,
-            commits: event.payload.commits.length
-          };
-
-          return eventData;
-        })
-      ),
-      map(eventViews =>
-        eventViews.map(eventView => {
-          eventView.repo = eventView.repo.split('/').pop() as string;
-
-          return eventView;
-        })
+        pushEvents.map(event =>
+          viewDataTransformer(event, this.motivationService)
+        )
       ),
       switchMap(events =>
         timer(0, 15000).pipe(
