@@ -1,14 +1,14 @@
 @import "../../../css/variables.scss";
 
 .action-card {
-  width: 25rem;
-  height: 28rem;
+  width: 60vw;
+  height: auto;
 
   padding: 1rem;
 
-  @media (max-width: $maxMobileWidth) {
-    width: 60vw;
-    height: auto;
+  @media (min-width: $maxMobileWidth) {
+    width: 25rem;
+    height: 28rem;
   }
 
   .mat-card-content {
@@ -22,27 +22,27 @@
   }
 
   img {
-    width: 20rem;
+    width: 8rem;
 
     margin: 0;
 
     object-fit: cover;
 
-    @media (max-width: $maxMobileWidth) {
-      width: 8rem;
+    @media (min-width: $maxMobileWidth) {
+      width: 20rem;
     }
   }
 }
 
 .action-button {
-  padding: 1rem;
-  font-size: 2rem;
+  padding: 0.5rem;
+  font-size: 1.25rem;
 
   font-weight: bold;
 
-  @media (max-width: $maxMobileWidth) {
-    padding: 0.5rem;
-    font-size: 1.25rem;
+  @media (min-width: $maxMobileWidth) {
+    padding: 1rem;
+    font-size: 2rem;
   }
 }
 
