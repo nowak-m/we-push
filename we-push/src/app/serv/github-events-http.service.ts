@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import {
-  PushEventsService,
   GithubEvent,
   GithubPushEvent
 } from '../shared/github-api-service.model';
@@ -14,10 +13,8 @@ const convertInterval = (intervalInSeconds: string): number =>
 @Injectable({
   providedIn: 'root'
 })
-export class GithubEventsHttpService implements PushEventsService {
+export class GithubEventsHttpService {
   events$: Observable<GithubEvent[]>;
-
-  pushEvents$: Observable<GithubPushEvent[]>;
 
   private readonly eventsUrl = `https://api.github.com/events`;
 
@@ -55,13 +52,6 @@ export class GithubEventsHttpService implements PushEventsService {
           return of([] as GithubEvent[]);
         }
       })
-    );
-
-    this.pushEvents$ = this.events$.pipe(
-      map(
-        events =>
-          events.filter(e => e.type === 'PushEvent') as GithubPushEvent[]
-      )
     );
   }
 }
