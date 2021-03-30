@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, timer } from 'rxjs';
 import { filter, finalize, map, switchMap, take, tap } from 'rxjs/operators';
-import { GithubApiService } from 'src/app/serv/github-api.service';
+import { GithubApiService } from 'src/app/serv/github-api-http.service';
 import { EventViewData } from '../event-view/event-view.component';
 
 interface EventViewDataWrapper {
