@@ -19,8 +19,18 @@ describe('EventDisplayComponent', () => {
           }
         },
         {
+          provide: 'MotivationService',
+          useValue: {
+            intro: () => 'intro',
+            outro: () => 'outro',
+            summary: () => ['summary', 'goes', 'here']
+          }
+        },
+        {
           provide: Router,
-          useValue: {}
+          useValue: {
+            navigate: () => {}
+          }
         }
       ]
     }).compileComponents();
