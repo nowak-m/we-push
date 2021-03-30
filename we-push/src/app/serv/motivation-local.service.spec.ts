@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MotivationService } from './motivation.service';
+import { MotivationService } from './motivation-local.service';
 
 describe('MotivationService', () => {
   let service: MotivationService;

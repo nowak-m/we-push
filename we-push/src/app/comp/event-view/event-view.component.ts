@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { MotivationService } from 'src/app/serv/motivation.service';
+import { MotivationService } from 'src/app/serv/motivation-local.service';
 
 export interface EventViewData {
   avatar: string;
