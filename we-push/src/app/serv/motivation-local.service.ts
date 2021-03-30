@@ -31,7 +31,7 @@ const generateSummary = (
 @Injectable({
   providedIn: 'root'
 })
-export class MotivationService {
+export class MotivationLocalService {
   intros = [
     'Just so you know...',
     'How is your day?',

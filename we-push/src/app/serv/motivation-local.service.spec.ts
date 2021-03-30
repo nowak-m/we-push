@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MotivationService } from './motivation-local.service';
+import { MotivationLocalService } from './motivation-local.service';
 
 describe('MotivationService', () => {
-  let service: MotivationService;
+  let service: MotivationLocalService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MotivationService);
+    service = TestBed.inject(MotivationLocalService);
   });
 
   it('should be created', () => {
