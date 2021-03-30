@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MotivationService } from '../shared/motivation-service.model';
 
 const oneOf = <T>(items: T[]): T =>
   items[Math.floor(Math.random() * items.length)];
@@ -31,7 +32,7 @@ const generateSummary = (
 @Injectable({
   providedIn: 'root'
 })
-export class MotivationLocalService {
+export class MotivationLocalService implements MotivationService {
   intros = [
     'Just so you know...',
     'How is your day?',
