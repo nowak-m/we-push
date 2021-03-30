@@ -37,7 +37,7 @@ const convertInterval = (intervalInSeconds: string): number =>
 @Injectable({
   providedIn: 'root'
 })
-export class GithubApiService {
+export class GithubApiHttpService {
   events$: Observable<GithubEvent[]>;
 
   pushEvents$: Observable<GithubPushEvent[]>;

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, timer } from 'rxjs';
 import { filter, finalize, map, switchMap, take, tap } from 'rxjs/operators';
-import { GithubApiService } from 'src/app/serv/github-api-http.service';
+import { GithubApiHttpService } from 'src/app/serv/github-api-http.service';
 import { EventViewData } from '../event-view/event-view.component';
 
 interface EventViewDataWrapper {
@@ -17,7 +17,7 @@ interface EventViewDataWrapper {
 export class EventDisplayComponent {
   event$: Observable<EventViewDataWrapper>;
 
-  constructor(public githubService: GithubApiService, public router: Router) {
+  constructor(public githubService: GithubApiHttpService, public router: Router) {
     this.event$ = this.githubService.pushEvents$.pipe(
       map(pushEvents =>
         pushEvents.map(event => {
