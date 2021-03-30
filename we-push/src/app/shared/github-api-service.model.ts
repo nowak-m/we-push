@@ -28,6 +28,6 @@ export interface GithubPushEvent extends GithubEvent {
   };
 }
 
-export interface GithubApiService {
+export interface PushEventsService {
   pushEvents$: Observable<GithubPushEvent[]>;
 }

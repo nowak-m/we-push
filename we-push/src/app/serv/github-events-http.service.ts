@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import {
-  GithubApiService,
+  PushEventsService,
   GithubEvent,
   GithubPushEvent
 } from '../shared/github-api-service.model';
@@ -14,7 +14,7 @@ const convertInterval = (intervalInSeconds: string): number =>
 @Injectable({
   providedIn: 'root'
 })
-export class GithubApiHttpService implements GithubApiService {
+export class GithubEventsHttpService implements PushEventsService {
   events$: Observable<GithubEvent[]>;
 
   pushEvents$: Observable<GithubPushEvent[]>;

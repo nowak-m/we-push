@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observable, timer } from 'rxjs';
 import { filter, finalize, map, switchMap, take } from 'rxjs/operators';
 import {
-  GithubApiService,
+  PushEventsService,
   GithubPushEvent
 } from 'src/app/shared/github-api-service.model';
 import { MotivationService } from 'src/app/shared/motivation-service.model';
@@ -40,7 +40,7 @@ export class EventDisplayComponent {
   event$: Observable<EventViewDataWrapper>;
 
   constructor(
-    @Inject('GithubApiService') public githubService: GithubApiService,
+    @Inject('GithubApiService') public githubService: PushEventsService,
     @Inject('MotivationService') public motivationService: MotivationService,
     public router: Router
   ) {
