@@ -21,6 +21,7 @@ import { AttributionsComponent } from './comp/attributions/attributions.componen
 import { AttributionViewComponent } from './comp/attribution-view/attribution-view.component';
 
 import { GithubApiHttpService } from './serv/github-api-http.service';
+import { MotivationLocalService } from './serv/motivation-local.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,10 @@ import { GithubApiHttpService } from './serv/github-api-http.service';
     {
       provide: 'GithubApiService',
       useClass: GithubApiHttpService
+    },
+    {
+      provide: 'MotivationService',
+      useClass: MotivationLocalService
     }
   ],
   bootstrap: [AppComponent],
