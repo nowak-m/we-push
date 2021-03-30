@@ -20,6 +20,8 @@ import { EventViewComponent } from './comp/event-view/event-view.component';
 import { AttributionsComponent } from './comp/attributions/attributions.component';
 import { AttributionViewComponent } from './comp/attribution-view/attribution-view.component';
 
+import { GithubApiHttpService } from './serv/github-api-http.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,12 @@ import { AttributionViewComponent } from './comp/attribution-view/attribution-vi
     MatDialogModule,
     MatDividerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'GithubApiService',
+      useClass: GithubApiHttpService
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [WelcomeDialogComponent, AttributionsComponent]
 })
