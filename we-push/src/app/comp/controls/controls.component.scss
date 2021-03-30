@@ -6,9 +6,10 @@
 
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
 
-  @media (max-width: $maxMobileWidth) {
-    flex-direction: column;
+  @media (min-width: $maxMobileWidth) {
+    flex-direction: row;
   }
 }
