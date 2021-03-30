@@ -17,7 +17,10 @@ interface EventViewDataWrapper {
 export class EventDisplayComponent {
   event$: Observable<EventViewDataWrapper>;
 
-  constructor(public githubService: GithubApiHttpService, public router: Router) {
+  constructor(
+    public githubService: GithubApiHttpService,
+    public router: Router
+  ) {
     this.event$ = this.githubService.pushEvents$.pipe(
       map(pushEvents =>
         pushEvents.map(event => {
