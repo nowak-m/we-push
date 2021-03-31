@@ -1,23 +1,14 @@
+@import "../../../styles.scss";
 @import "../../../css/variables.scss";
+@import "../../../css/dialog.scss";
 
 $avatarSizeMobile: 4rem;
 $avatarSizeDesktop: 6rem;
 
-$cardWidth: 40vw;
-$actionsHeight: 5vh;
-
 app-event-view {
-  mat-card {
-    height: 60vh;
-
-    @media (min-width: $maxMobileWidth) {
-      width: $cardWidth;
-      height: 70vh;
-    }
-  }
-
   mat-card-content {
-    height: calc(100% - #{$actionsHeight} - 2 * #{$cardMarginMobile});
+    padding: 2rem 0rem;
+
     display: flex !important;
     flex-direction: column;
     justify-content: space-around;
@@ -80,6 +71,8 @@ app-event-view {
     display: flex;
     align-items: center;
 
+    margin: 1rem 0;
+
     p {
       @media (min-width: $maxMobileWidth) {
         margin-bottom: 1.5rem;
@@ -88,10 +81,7 @@ app-event-view {
   }
 
   .mat-card-actions {
-    height: $actionsHeight;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    @extend .app-flex-end;
 
     margin: 0 $cardMarginMobile;
 

@@ -1,5 +1,8 @@
+@import "../../../css/variables.scss";
+
 :host {
   display: block;
+  padding-right: $scrollbarPadding;
 }
 
 h1 {

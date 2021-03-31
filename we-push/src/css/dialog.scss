@@ -1,7 +1,7 @@
 $appDialogActionsHeight: 3rem;
 
 .app-dialog-actions {
-  height: 4rem;
+  height: $appDialogActionsHeight;
   display: flex;
   justify-content: flex-end;
   align-items: center;
