@@ -1,4 +1,5 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
+import { LinkHandler } from 'src/app/shared/link-service.model';
 
 export interface PushEventViewData {
   avatar: string;
@@ -29,7 +30,11 @@ export class EventViewComponent {
 
   identify;
 
-  constructor() {
+  constructor(@Inject('LinkHandler') public linkHanlder: LinkHandler) {
     this.identify = identify;
+  }
+
+  onClick() {
+    this.linkHanlder.open('github');
   }
 }

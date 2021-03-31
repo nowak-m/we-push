@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { LinkHandler } from 'src/app/shared/link-service.model';
 import { ActionComponentData } from '../action/action.component';
 
 const identify = (index: number, item: ActionComponentData) => item.id;
@@ -27,7 +28,10 @@ export class ControlsComponent {
 
   identify;
 
-  constructor(public router: Router) {
+  constructor(
+    public router: Router,
+    @Inject('LinkHandler') public linkHanlder: LinkHandler
+  ) {
     this.identify = identify;
   }
 
@@ -35,6 +39,9 @@ export class ControlsComponent {
     switch (action) {
       case 'procrastinate':
         this.router.navigate(['display']).catch(error => console.error(error));
+        break;
+      case 'work':
+        this.linkHanlder.open('github');
         break;
       default:
     }
