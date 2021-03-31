@@ -20,7 +20,7 @@ export class ControlsComponent {
     },
     {
       id: 'work',
-      src: 'https://octodex.github.com/images/original.png',
+      src: 'https://octodex.github.com/images/jetpacktocat.png',
       alt: 'Photo of an Octocat',
       buttonText: 'Head to Github!'
     }
