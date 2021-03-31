@@ -2,12 +2,13 @@
 @import "../../../css/dialog.scss";
 
 $attributionContainerHeight: calc(
-  100% - #{$appDialogActionsHeight} - 2 * #{$cardMargin}
+  100% - #{$appDialogActionsHeight} - 2 * #{$cardMarginMobile}
 );
 
 #attribution-container {
   height: $attributionContainerHeight;
   overflow-y: scroll;
+  padding-right: 1rem;
 }
 
 mat-divider {

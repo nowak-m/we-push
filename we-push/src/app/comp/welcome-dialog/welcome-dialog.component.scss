@@ -7,4 +7,9 @@ span {
 
 p {
   font-weight: 500;
+
+  @media (min-width: $maxMobileWidth) {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 }
