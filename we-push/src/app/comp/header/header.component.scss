@@ -1,15 +1,14 @@
+@import "../../../styles.scss";
 @import "../../../css/variables.scss";
 
 :host {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  @extend .app-flex-start;
 
   padding: 0 1rem;
 }
 
 #logo {
-  color: #43a047;
+  color: $primaryColor;
   font-family: "Lato";
   font-weight: 600;
   font-size: 1.25rem;

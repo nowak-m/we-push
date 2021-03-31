@@ -1,9 +1,13 @@
 @import "../../../css/variables.scss";
 @import "../../../css/dialog.scss";
 
-$attributionContainerHeightMobile: calc(
-  100% - #{$appDialogActionsHeight} - 2 * #{$cardMarginMobile}
-);
+:host {
+  display: block;
+  height: 100%;
+  position: relative;
+}
+
+$attributionContainerHeightMobile: calc(100% - #{$appDialogActionsHeight});
 
 #attribution-container {
   height: $attributionContainerHeightMobile;
@@ -12,4 +16,5 @@ $attributionContainerHeightMobile: calc(
 
 mat-divider {
   margin: 1rem 0;
+  margin-right: $scrollbarPadding;
 }
