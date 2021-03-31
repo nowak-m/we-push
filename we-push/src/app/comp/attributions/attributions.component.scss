@@ -1,12 +1,12 @@
 @import "../../../css/variables.scss";
 @import "../../../css/dialog.scss";
 
-$attributionContainerHeight: calc(
-  100% - #{$appDialogActionsHeight} - 2 * #{$cardMargin}
+$attributionContainerHeightMobile: calc(
+  100% - #{$appDialogActionsHeight} - 2 * #{$cardMarginMobile}
 );
 
 #attribution-container {
-  height: $attributionContainerHeight;
+  height: $attributionContainerHeightMobile;
   overflow-y: scroll;
 }
 
