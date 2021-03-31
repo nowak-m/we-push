@@ -23,6 +23,7 @@ import { AttributionViewComponent } from './comp/attribution-view/attribution-vi
 
 import { MotivationLocalService } from './serv/motivation-local.service';
 import { GithubPushEventsHttpService } from './serv/github-push-events-http.service';
+import { LinkService } from './serv/link.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,10 @@ import { GithubPushEventsHttpService } from './serv/github-push-events-http.serv
     {
       provide: 'MotivationService',
       useClass: MotivationLocalService
+    },
+    {
+      provide: 'LinkHandler',
+      useClass: LinkService
     }
   ],
   bootstrap: [AppComponent],
