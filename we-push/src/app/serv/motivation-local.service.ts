@@ -4,6 +4,9 @@ import { MotivationService } from '../shared/motivation-service.model';
 const oneOf = <T>(items: T[]): T =>
   items[Math.floor(Math.random() * items.length)];
 
+const getCommitString = (count: number): string => 
+  count == 1 ? "commit" : "commits"
+
 const generateSummary = (
   template: number,
   user: string,
@@ -17,13 +20,13 @@ const generateSummary = (
     case 1:
       return [
         `${spannedRepo} repository`,
-        `has ${spannedCommits} new commits`,
+        `has ${spannedCommits} new ${getCommitString(commits)}`,
         `thanks to ${spannedUser}`
       ];
     default:
       return [
         `${spannedUser} has just pushed`,
-        `${spannedCommits} commits`,
+        `${spannedCommits} ${getCommitString(commits)}`,
         `to ${spannedRepo} repository`
       ];
   }
