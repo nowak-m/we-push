@@ -12,6 +12,8 @@
     <h1>{{ data.outro }}</h1>
   </mat-card-content>
   <mat-card-actions>
-    <button class="action-button" mat-raised-button>Go to Github</button>
+    <button class="action-button" mat-raised-button (click)="onClick()">
+      Go to Github
+    </button>
   </mat-card-actions>
 </mat-card>
