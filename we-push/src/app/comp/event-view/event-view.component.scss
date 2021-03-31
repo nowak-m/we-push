@@ -3,16 +3,16 @@
 $avatarSizeMobile: 4rem;
 $avatarSizeDesktop: 6rem;
 
-$cardHeight: 60vh;
 $cardWidth: 40vw;
 $actionsHeight: 5vh;
 
 app-event-view {
   mat-card {
-    height: $cardHeight;
+    height: 60vh;
 
     @media (min-width: $maxMobileWidth) {
       width: $cardWidth;
+      height: 70vh;
     }
   }
 
@@ -79,6 +79,12 @@ app-event-view {
   .summary {
     display: flex;
     align-items: center;
+
+    p {
+      @media (min-width: $maxMobileWidth) {
+        margin-bottom: 1.5rem;
+      }
+    }
   }
 
   .mat-card-actions {
