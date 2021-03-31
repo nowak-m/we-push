@@ -4,8 +4,8 @@ import { MotivationService } from '../shared/motivation-service.model';
 const oneOf = <T>(items: T[]): T =>
   items[Math.floor(Math.random() * items.length)];
 
-const getCommitString = (count: number): string => 
-  count == 1 ? "commit" : "commits"
+const getCommitString = (count: number): string =>
+  count == 1 ? 'commit' : 'commits';
 
 const generateSummary = (
   template: number,
