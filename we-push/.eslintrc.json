@@ -58,7 +58,7 @@
             "accessibility": "no-public"
           }
         ],
-        // "@typescript-eslint/no-extraneous-class": "error",
+        "@typescript-eslint/no-extraneous-class": "error",
         "@typescript-eslint/no-floating-promises": "error",
         "@typescript-eslint/no-for-in-array": "error",
         "@typescript-eslint/no-require-imports": "error",
@@ -132,7 +132,7 @@
         "no-sequences": "error",
         "no-sparse-arrays": "error",
         "no-template-curly-in-string": "error",
-        // "no-useless-constructor": "error",
+        "no-useless-constructor": "error",
         "no-void": "error",
         "padding-line-between-statements": [
           "error",
