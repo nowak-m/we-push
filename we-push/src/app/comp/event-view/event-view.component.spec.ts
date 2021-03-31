@@ -8,7 +8,13 @@ describe('EventViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EventViewComponent]
+      declarations: [EventViewComponent],
+      providers: [
+        {
+          provide: 'LinkHandler',
+          useValue: {}
+        }
+      ]
     }).compileComponents();
   });
 

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { AttributionsComponent } from './attributions.component';
 
@@ -8,7 +9,13 @@ describe('AttributionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AttributionsComponent]
+      declarations: [AttributionsComponent],
+      providers: [
+        {
+          provide: MatDialogRef,
+          useValue: {}
+        }
+      ]
     }).compileComponents();
   });
 
