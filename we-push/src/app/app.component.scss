@@ -10,4 +10,5 @@ app-footer {
 
 #outlet-wrapper {
   height: calc(100% - #{$headerHeight} - #{$footerHeight});
+  position: relative;
 }
