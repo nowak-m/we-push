@@ -53,12 +53,13 @@ export class EventDisplayComponent {
       switchMap(events =>
         timer(0, 15000).pipe(
           take(events.length + 1),
-          map(i => {
-            return {
-              data: events[i],
-              sequence: i
-            } as EventViewDataWrapper;
-          })
+          map(
+            i =>
+              ({
+                data: events[i],
+                sequence: i
+              } as EventViewDataWrapper)
+          )
         )
       ),
       finalize(async () => this.router.navigate(['controls'])),

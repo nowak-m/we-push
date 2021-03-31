@@ -13,9 +13,9 @@ describe('EventDisplayComponent', () => {
       declarations: [EventDisplayComponent],
       providers: [
         {
-          provide: 'GithubApiService',
+          provide: 'PushEventsService',
           useValue: {
-            pushEvents$: of([])
+            events$: of([])
           }
         },
         {

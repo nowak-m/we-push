@@ -13,7 +13,12 @@ export interface ActionComponentData {
   styleUrls: ['./action.component.scss']
 })
 export class ActionComponent {
-  @Input() data!: ActionComponentData;
+  @Input() data: ActionComponentData = {
+    id: '',
+    src: '',
+    alt: '',
+    buttonText: ''
+  };
 
   @Output() readonly clicked = new EventEmitter<string>();
 
