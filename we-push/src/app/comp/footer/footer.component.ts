@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AttributionsComponent } from '../attributions/attributions.component';
@@ -8,11 +9,21 @@ import { AttributionsComponent } from '../attributions/attributions.component';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    public breakpointObserver: BreakpointObserver
+  ) {}
 
   displayAttributions() {
-    const dialogRef = this.dialog.open(AttributionsComponent, {
-      height: '70vh'
+    let height = '24rem';
+    let width = 'auto';
+    if (this.breakpointObserver.isMatched('(min-width: 600px)')) {
+      height = '40rem';
+      width = '40rem';
+    }
+    this.dialog.open(AttributionsComponent, {
+      height,
+      width
     });
   }
 }
