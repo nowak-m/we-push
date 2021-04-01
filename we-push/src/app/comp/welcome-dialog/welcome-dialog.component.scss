@@ -8,8 +8,10 @@ span {
 p {
   font-weight: 500;
 
+  line-height: normal;
+
   @media (min-width: $maxMobileWidth) {
-    font-size: 1rem;
+    font-size: 1.25rem;
     margin-bottom: 1rem;
   }
 }
