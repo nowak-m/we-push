@@ -7,21 +7,26 @@ import {
   PushEventsService,
   GithubPushEvent
 } from 'src/app/shared/github-api-service.model';
-import { MotivationService } from 'src/app/shared/motivation-service.model';
+import {
+  MotivationService,
+  SummaryData
+} from 'src/app/shared/motivation-service.model';
 import { PushEventViewData } from '../event-view/event-view.component';
 
 const viewDataTransformer = (
   event: GithubPushEvent,
   motivationService: MotivationService
 ): PushEventViewData => {
+  const summaryData: SummaryData = {
+    user: event.actor.display_login,
+    repo: event.repo.url.split('/').pop() as string,
+    commits: event.payload.commits.length
+  };
+
   const viewData: PushEventViewData = {
     avatar: event.actor.avatar_url,
     intro: motivationService.getIntro(),
-    summary: motivationService.getSummary(
-      event.actor.display_login,
-      event.repo.url.split('/').pop() as string,
-      event.payload.commits.length
-    ),
+    summary: motivationService.getSummary(summaryData),
     outro: motivationService.getOutro()
   };
 
