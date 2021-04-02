@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, timer } from 'rxjs';
 import { filter, finalize, map, switchMap, take } from 'rxjs/operators';
+import { flyInOut } from 'src/app/animations/component-animations';
 import {
   PushEventsService,
   GithubPushEvent
@@ -34,7 +35,8 @@ interface EventViewDataWrapper {
 @Component({
   selector: 'app-event-display',
   templateUrl: './event-display.component.html',
-  styleUrls: ['./event-display.component.scss']
+  styleUrls: ['./event-display.component.scss'],
+  animations: [flyInOut]
 })
 export class EventDisplayComponent {
   event$: Observable<EventViewDataWrapper>;

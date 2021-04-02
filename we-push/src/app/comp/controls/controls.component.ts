@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { zoomIn } from 'src/app/animations/component-animations';
 import { LinkHandler } from 'src/app/shared/link-service.model';
 import { ActionComponentData } from '../action/action.component';
 
@@ -8,7 +9,8 @@ const identify = (index: number, item: ActionComponentData) => item.id;
 @Component({
   selector: 'app-controls',
   templateUrl: './controls.component.html',
-  styleUrls: ['./controls.component.scss']
+  styleUrls: ['./controls.component.scss'],
+  animations: [zoomIn]
 })
 export class ControlsComponent {
   actions: ActionComponentData[] = [
@@ -27,6 +29,8 @@ export class ControlsComponent {
   ];
 
   identify;
+
+  highlightedAction = -1;
 
   constructor(
     public router: Router,

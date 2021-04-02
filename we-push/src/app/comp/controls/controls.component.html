@@ -1,3 +1,9 @@
-<ng-container *ngFor="let action of actions; trackBy: identify">
-  <app-action [data]="action" (clicked)="onSelect($event)"></app-action>
+<ng-container *ngFor="let action of actions; let i = index; trackBy: identify">
+  <app-action
+    [data]="action"
+    (clicked)="onSelect($event)"
+    (mouseenter)="highlightedAction = i"
+    (mouseleave)="highlightedAction = -1"
+    [@zoomIn]="highlightedAction === i ? 'zoom' : ''"
+  ></app-action>
 </ng-container>

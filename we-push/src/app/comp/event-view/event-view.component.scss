@@ -6,6 +6,10 @@ $avatarSizeMobile: 4rem;
 $avatarSizeDesktop: 6rem;
 
 app-event-view {
+  position: absolute;
+
+  padding: 1rem;
+
   mat-card-content {
     padding: 2rem 0rem;
 
