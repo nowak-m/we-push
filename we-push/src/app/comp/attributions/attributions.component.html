@@ -1,8 +1,12 @@
 <div id="attribution-container">
   <ng-container
-    *ngFor="let section of sections; let i = index; trackBy: identifySection"
+    *ngFor="
+      let sectionName of attributionSectionNames;
+      let i = index;
+      trackBy: identifySection
+    "
   >
-    <h1>{{ section }}</h1>
+    <h1>{{ sectionName }}</h1>
     <ng-container
       *ngFor="
         let attribution of attributionGroups[i];

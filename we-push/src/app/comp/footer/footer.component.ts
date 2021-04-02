@@ -14,7 +14,7 @@ export class FooterComponent {
     public breakpointObserver: BreakpointObserver
   ) {}
 
-  displayAttributions() {
+  onClick() {
     let height = '24rem';
     let width = 'auto';
     if (this.breakpointObserver.isMatched('(min-width: 600px)')) {

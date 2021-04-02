@@ -7,26 +7,33 @@ import {
   PushEventsService,
   GithubPushEvent
 } from 'src/app/shared/github-api-service.model';
-import { MotivationService } from 'src/app/shared/motivation-service.model';
+import {
+  MotivationService,
+  SummaryData
+} from 'src/app/shared/motivation-service.model';
 import { PushEventViewData } from '../event-view/event-view.component';
 
-const viewDataTransformer = (
+const transformViewData = (
   event: GithubPushEvent,
   motivationService: MotivationService
 ): PushEventViewData => {
+  const summaryData: SummaryData = {
+    user: event.actor.display_login,
+    repo: event.repo.url.split('/').pop() as string,
+    commits: event.payload.commits.length
+  };
+
   const viewData: PushEventViewData = {
     avatar: event.actor.avatar_url,
     intro: motivationService.getIntro(),
-    summary: motivationService.getSummary(
-      event.actor.display_login,
-      event.repo.url.split('/').pop() as string,
-      event.payload.commits.length
-    ),
+    summary: motivationService.getSummary(summaryData),
     outro: motivationService.getOutro()
   };
 
   return viewData;
 };
+
+const EVENT_DISPLAY_DURATION = 15000;
 
 interface EventViewDataWrapper {
   data: PushEventViewData;
@@ -48,24 +55,24 @@ export class EventDisplayComponent {
   ) {
     this.event$ = this.pushEventsService.events$.pipe(
       map(pushEvents =>
-        pushEvents.map(event =>
-          viewDataTransformer(event, this.motivationService)
+        pushEvents.map(pushEvent =>
+          transformViewData(pushEvent, this.motivationService)
         )
       ),
-      switchMap(events =>
-        timer(0, 15000).pipe(
-          take(events.length + 1),
+      switchMap(pushEvents =>
+        timer(0, EVENT_DISPLAY_DURATION).pipe(
+          take(pushEvents.length + 1),
           map(
-            i =>
+            eventIndex =>
               ({
-                data: events[i],
-                sequence: i
+                data: pushEvents[eventIndex],
+                sequence: eventIndex
               } as EventViewDataWrapper)
           )
         )
       ),
       finalize(async () => this.router.navigate(['controls'])),
-      filter(e => undefined !== e)
+      filter(event => undefined !== event)
     );
   }
 }

@@ -13,7 +13,7 @@ const identifySection = (index: number, item: string) => item;
   styleUrls: ['./attributions.component.scss']
 })
 export class AttributionsComponent {
-  attributions: AttributionViewData[] = [
+  readonly attributions: AttributionViewData[] = [
     {
       section: 'Images',
       name: 'Octocat images',
@@ -23,9 +23,9 @@ export class AttributionsComponent {
     }
   ];
 
-  attributionMap = new Map<string, AttributionViewData[]>();
+  private sectionSectionMap = new Map<string, AttributionViewData[]>();
 
-  sections: string[];
+  attributionSectionNames: string[] = [];
 
   attributionGroups: AttributionViewData[][] = [];
 
@@ -38,23 +38,21 @@ export class AttributionsComponent {
 
     this.identifySection = identifySection;
 
-    this.attributions.forEach(a => {
-      if (this.attributionMap.has(a.section)) {
-        this.attributionMap.get(a.section)?.push(a);
+    this.attributions.forEach(attribution => {
+      if (this.sectionSectionMap.has(attribution.section)) {
+        this.sectionSectionMap.get(attribution.section)?.push(attribution);
       } else {
-        this.attributionMap.set(a.section, [a]);
+        this.sectionSectionMap.set(attribution.section, [attribution]);
       }
     });
 
-    this.sections = [...this.attributionMap.keys()];
+    this.attributionSectionNames = [...this.sectionSectionMap.keys()];
 
-    this.sections.forEach(s => {
-      this.attributionGroups.push(this.attributionMap.get(s) || []);
+    this.attributionSectionNames.forEach(sectionName => {
+      this.attributionGroups.push(
+        this.sectionSectionMap.get(sectionName) || []
+      );
     });
-  }
-
-  getAttributions(section: string): AttributionViewData[] {
-    return this.attributionMap.get(section) || [];
   }
 
   onClick() {
