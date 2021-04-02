@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RouterOutlet } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { NavigationStart, Router } from '@angular/router';
 import { WelcomeDialogComponent } from './comp/welcome-dialog/welcome-dialog.component';
 import { slider } from './animations/route-animations';
-
-const getRouterOutletState = (outlet: RouterOutlet) =>
-  outlet.isActivated ? outlet.activatedRoute : '';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +15,13 @@ const getRouterOutletState = (outlet: RouterOutlet) =>
 export class AppComponent implements OnInit {
   title = 'we-push';
 
-  outlet!: RouterOutlet;
+  navigationStart$: Observable<string>;
 
-  getRouterOutletState;
-
-  constructor(public dialog: MatDialog) {
-    this.getRouterOutletState = getRouterOutletState;
+  constructor(public dialog: MatDialog, public router: Router) {
+    this.navigationStart$ = this.router.events.pipe(
+      filter(e => e instanceof NavigationStart),
+      map(e => (e as NavigationStart).url)
+    );
   }
 
   ngOnInit() {
