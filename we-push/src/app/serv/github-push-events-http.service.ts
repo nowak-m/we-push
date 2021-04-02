@@ -3,9 +3,12 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   PushEventsService,
-  GithubPushEvent
+  GithubPushEvent,
+  GithubEvent
 } from '../shared/github-api-service.model';
 import { GithubEventsHttpService } from './github-events-http.service';
+
+const isPushEvent = (event: GithubEvent): boolean => event.type === 'PushEvent';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +20,7 @@ export class GithubPushEventsHttpService implements PushEventsService {
     this.events$ = eventsService.events$.pipe(
       map(
         events =>
-          events.filter(
-            event => event.type === 'PushEvent'
-          ) as GithubPushEvent[]
+          events.filter(event => isPushEvent(event)) as GithubPushEvent[]
       )
     );
   }
