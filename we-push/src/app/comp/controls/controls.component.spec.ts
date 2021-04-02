@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 
 import { ControlsComponent } from './controls.component';
@@ -10,6 +11,7 @@ describe('ControlsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ControlsComponent],
+      imports: [BrowserAnimationsModule],
       providers: [
         {
           provide: Router,
