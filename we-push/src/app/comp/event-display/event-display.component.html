@@ -1,10 +1,11 @@
 <ng-container *ngIf="event$ | async as wrapper; else noEvents">
   <app-event-view
+    [@flyInOut]
     *ngIf="wrapper.sequence % 2; else secondaryView"
     [data]="wrapper.data"
   ></app-event-view>
   <ng-template #secondaryView>
-    <app-event-view [data]="wrapper.data"></app-event-view>
+    <app-event-view [@flyInOut] [data]="wrapper.data"></app-event-view>
   </ng-template>
 </ng-container>
 <ng-template #noEvents>
