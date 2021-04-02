@@ -6,6 +6,8 @@ import { NavigationStart, Router } from '@angular/router';
 import { WelcomeDialogComponent } from './comp/welcome-dialog/welcome-dialog.component';
 import { slider } from './animations/route-animations';
 
+const DIALOG_DISPLAY_DELAY = 600;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,8 +21,8 @@ export class AppComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public router: Router) {
     this.navigationStart$ = this.router.events.pipe(
-      filter(e => e instanceof NavigationStart),
-      map(e => (e as NavigationStart).url)
+      filter(event => event instanceof NavigationStart),
+      map(event => (event as NavigationStart).url)
     );
   }
 
@@ -29,6 +31,6 @@ export class AppComponent implements OnInit {
       this.dialog.open(WelcomeDialogComponent, {
         width: '600px'
       });
-    }, 600);
+    }, DIALOG_DISPLAY_DELAY);
   }
 }

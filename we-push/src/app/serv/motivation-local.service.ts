@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MotivationService } from '../shared/motivation-service.model';
 
-const oneOf = <T>(items: T[]): T =>
+const randomArrayElement = <T>(items: T[]): T =>
   items[Math.floor(Math.random() * items.length)];
 
 const getCommitString = (count: number): string =>
@@ -36,7 +36,7 @@ const generateSummary = (
   providedIn: 'root'
 })
 export class MotivationLocalService implements MotivationService {
-  intros = [
+  private readonly intros = [
     'Just so you know...',
     'How is your day?',
     "The world won't wait",
@@ -44,7 +44,7 @@ export class MotivationLocalService implements MotivationService {
     'Still procrastinating?'
   ];
 
-  outros = [
+  private readonly outros = [
     'We hope you had a nice day as well!',
     'And how did you contribute today?',
     "Don't let the fun miss you!",
@@ -54,11 +54,11 @@ export class MotivationLocalService implements MotivationService {
   private readonly templates = 2;
 
   getIntro(): string {
-    return oneOf(this.intros);
+    return randomArrayElement(this.intros);
   }
 
   getOutro(): string {
-    return oneOf(this.outros);
+    return randomArrayElement(this.outros);
   }
 
   getSummary(user: string, repo: string, commits: number): string[] {

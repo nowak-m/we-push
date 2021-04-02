@@ -28,6 +28,8 @@ const viewDataTransformer = (
   return viewData;
 };
 
+const EVENT_DISPLAY_DURATION = 15000;
+
 interface EventViewDataWrapper {
   data: PushEventViewData;
   sequence: number;
@@ -48,24 +50,24 @@ export class EventDisplayComponent {
   ) {
     this.event$ = this.pushEventsService.events$.pipe(
       map(pushEvents =>
-        pushEvents.map(event =>
-          viewDataTransformer(event, this.motivationService)
+        pushEvents.map(pushEvent =>
+          viewDataTransformer(pushEvent, this.motivationService)
         )
       ),
-      switchMap(events =>
-        timer(0, 15000).pipe(
-          take(events.length + 1),
+      switchMap(pushEvents =>
+        timer(0, EVENT_DISPLAY_DURATION).pipe(
+          take(pushEvents.length + 1),
           map(
-            i =>
+            eventIndex =>
               ({
-                data: events[i],
-                sequence: i
+                data: pushEvents[eventIndex],
+                sequence: eventIndex
               } as EventViewDataWrapper)
           )
         )
       ),
       finalize(async () => this.router.navigate(['controls'])),
-      filter(e => undefined !== e)
+      filter(event => undefined !== event)
     );
   }
 }

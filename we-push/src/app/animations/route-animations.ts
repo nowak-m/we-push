@@ -9,6 +9,8 @@ import {
   keyframes
 } from '@angular/animations';
 
+const ROUTE_ANIMATION_TIMING = '600ms ease';
+
 export const slider = trigger('routeAnimations', [
   transition('* => *', [
     group([
@@ -42,7 +44,7 @@ export const slider = trigger('routeAnimations', [
         ':enter',
         [
           animate(
-            '600ms ease',
+            ROUTE_ANIMATION_TIMING,
             style({
               position: 'absolute',
               left: 0,
@@ -57,7 +59,7 @@ export const slider = trigger('routeAnimations', [
         ':leave',
         [
           animate(
-            '600ms ease',
+            ROUTE_ANIMATION_TIMING,
             style({
               position: 'absolute',
               left: 0,

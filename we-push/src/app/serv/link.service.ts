@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
 import { LinkHandler } from '../shared/link-service.model';
 
-const open = (url: SafeUrl) => {
+const openUrl = (url: SafeUrl) => {
   switch (url) {
     case 'github':
       window.open('https://github.com/');
@@ -16,9 +16,9 @@ const open = (url: SafeUrl) => {
   providedIn: 'root'
 })
 export class LinkService implements LinkHandler {
-  open;
+  openUrl;
 
   constructor() {
-    this.open = open;
+    this.openUrl = openUrl;
   }
 }

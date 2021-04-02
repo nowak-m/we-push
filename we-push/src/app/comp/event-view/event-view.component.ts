@@ -35,6 +35,6 @@ export class EventViewComponent {
   }
 
   onClick() {
-    this.linkHanlder.open('github');
+    this.linkHanlder.openUrl('github');
   }
 }

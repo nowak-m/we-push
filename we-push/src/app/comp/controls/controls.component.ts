@@ -45,7 +45,7 @@ export class ControlsComponent {
         this.router.navigate(['display']).catch(error => console.error(error));
         break;
       case 'work':
-        this.linkHanlder.open('github');
+        this.linkHanlder.openUrl('github');
         break;
       default:
     }

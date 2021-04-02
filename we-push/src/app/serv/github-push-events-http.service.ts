@@ -17,7 +17,9 @@ export class GithubPushEventsHttpService implements PushEventsService {
     this.events$ = eventsService.events$.pipe(
       map(
         events =>
-          events.filter(e => e.type === 'PushEvent') as GithubPushEvent[]
+          events.filter(
+            event => event.type === 'PushEvent'
+          ) as GithubPushEvent[]
       )
     );
   }
