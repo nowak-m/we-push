@@ -13,7 +13,7 @@ import {
 } from 'src/app/shared/motivation-service.model';
 import { PushEventViewData } from '../event-view/event-view.component';
 
-const viewDataTransformer = (
+const transformViewData = (
   event: GithubPushEvent,
   motivationService: MotivationService
 ): PushEventViewData => {
@@ -56,7 +56,7 @@ export class EventDisplayComponent {
     this.event$ = this.pushEventsService.events$.pipe(
       map(pushEvents =>
         pushEvents.map(pushEvent =>
-          viewDataTransformer(pushEvent, this.motivationService)
+          transformViewData(pushEvent, this.motivationService)
         )
       ),
       switchMap(pushEvents =>

@@ -4,7 +4,7 @@ import {
   SummaryData
 } from '../shared/motivation-service.model';
 
-const randomArrayElement = <T>(items: T[]): T =>
+const getRandomArrayElement = <T>(items: T[]): T =>
   items[Math.floor(Math.random() * items.length)];
 
 const getCommitString = (count: number): string =>
@@ -56,11 +56,11 @@ export class MotivationLocalService implements MotivationService {
   private readonly templates = 2;
 
   getIntro(): string {
-    return randomArrayElement(this.intros);
+    return getRandomArrayElement(this.intros);
   }
 
   getOutro(): string {
-    return randomArrayElement(this.outros);
+    return getRandomArrayElement(this.outros);
   }
 
   getSummary(summaryData: SummaryData): string[] {
