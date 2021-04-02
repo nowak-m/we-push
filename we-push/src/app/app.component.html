@@ -1,5 +1,5 @@
 <app-header class="mat-elevation-z8"></app-header>
-<div [@routeAnimations]="getRouterOutletState(outlet)" id="outlet-wrapper">
+<div [@routeAnimations]="navigationStart$ | async" id="outlet-wrapper">
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
 <app-footer></app-footer>
