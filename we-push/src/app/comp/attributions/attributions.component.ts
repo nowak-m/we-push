@@ -23,7 +23,7 @@ export class AttributionsComponent {
     }
   ];
 
-  sectionSectionMap = new Map<string, AttributionViewData[]>();
+  private sectionSectionMap = new Map<string, AttributionViewData[]>();
 
   attributionSectionNames: string[] = [];
 
