@@ -10,14 +10,16 @@ const getRandomArrayElement = <T>(items: T[]): T =>
 const getCommitString = (count: number): string =>
   count === 1 ? 'commit' : 'commits';
 
+const wrapInSpan = (text: any): string => `<span>${text}</span>`;
+
 const generateSummary = (
   template: number,
   summaryData: SummaryData
 ): string[] => {
   const { user, repo, commits } = summaryData;
-  const spannedUser = `<span>${user}</span>`;
-  const spannedRepo = `<span>${repo}</span>`;
-  const spannedCommits = `<span>${commits}</span>`;
+  const spannedUser = wrapInSpan(user);
+  const spannedRepo = wrapInSpan(repo);
+  const spannedCommits = wrapInSpan(commits);
   switch (template) {
     case 1:
       return [
