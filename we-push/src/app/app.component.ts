@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { NavigationStart, Router } from '@angular/router';
 import { WelcomeDialogComponent } from './comp/welcome-dialog/welcome-dialog.component';
 import { slider } from './animations/route-animations';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 const DIALOG_DISPLAY_DELAY = 600;
 
@@ -19,7 +20,11 @@ export class AppComponent implements OnInit {
 
   navigationStart$: Observable<string>;
 
-  constructor(public dialog: MatDialog, public router: Router) {
+  constructor(
+    public dialog: MatDialog,
+    public router: Router,
+    public breakpointObserver: BreakpointObserver
+  ) {
     this.navigationStart$ = this.router.events.pipe(
       filter(event => event instanceof NavigationStart),
       map(event => (event as NavigationStart).url)
@@ -28,8 +33,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
+      let width = 'auto';
+      if (this.breakpointObserver.isMatched('(min-width: 600px)')) {
+        width = '30rem';
+      }
       this.dialog.open(WelcomeDialogComponent, {
-        width: '600px'
+        width
       });
     }, DIALOG_DISPLAY_DELAY);
   }
