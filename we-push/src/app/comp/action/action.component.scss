@@ -3,16 +3,14 @@
 
 .action-card {
   width: 14rem;
-  height: auto;
+
+  padding: 0;
 
   @media (min-width: $maxMobileWidth) {
     width: 25rem;
-    height: 28rem;
   }
 
-  .mat-card-content {
-    margin-bottom: 0;
-
+  .mat-button-wrapper {
     @extend .app-flex-column;
   }
 
@@ -30,7 +28,10 @@
 }
 
 .action-button {
-  padding: 0.5rem;
+  width: 100%;
+
+  padding: 1rem;
+
   font-size: 1.25rem;
 
   font-weight: bold;
@@ -39,8 +40,4 @@
     padding: 1rem;
     font-size: 2rem;
   }
-}
-
-.mat-card-actions {
-  @extend .app-flex;
 }

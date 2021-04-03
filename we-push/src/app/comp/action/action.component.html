@@ -1,10 +1,10 @@
 <mat-card class="action-card mat-elevation-z8">
   <mat-card-content>
-    <img mat-card-image [src]="data.src" [alt]="data.alt" />
-  </mat-card-content>
-  <mat-card-actions>
     <button class="action-button" mat-button (click)="onClick()">
-      {{ data.buttonText }}
+      <img mat-card-image [src]="data.src" [alt]="data.alt" />
+      <p>
+        {{ data.buttonText }}
+      </p>
     </button>
-  </mat-card-actions>
+  </mat-card-content>
 </mat-card>
