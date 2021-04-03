@@ -11,7 +11,13 @@
   color: $primaryColor;
   font-family: "Lato";
   font-weight: 600;
-  font-size: 1.25rem;
-  letter-spacing: 0.2rem;
+  font-size: 1.15em;
+  letter-spacing: 0.15rem;
   text-transform: uppercase;
+  user-select: none;
+
+  @media (min-width: $maxMobileWidth) {
+    font-size: 1.3rem;
+    letter-spacing: 0.25rem;
+  }
 }

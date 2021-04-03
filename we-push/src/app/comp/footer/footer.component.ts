@@ -15,11 +15,11 @@ export class FooterComponent {
   ) {}
 
   onClick() {
-    let height = '24rem';
+    let height = '70vh';
     let width = 'auto';
     if (this.breakpointObserver.isMatched('(min-width: 600px)')) {
-      height = '40rem';
-      width = '40rem';
+      height = '30rem';
+      width = '30rem';
     }
     this.dialog.open(AttributionsComponent, {
       height,

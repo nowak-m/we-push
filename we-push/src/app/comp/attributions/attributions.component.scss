@@ -7,7 +7,16 @@
   position: relative;
 }
 
-$attributionContainerHeightMobile: calc(100% - #{$appDialogActionsHeight});
+$headerHeight: 3rem;
+
+h1 {
+  height: $headerHeight;
+  margin: 0;
+}
+
+$attributionContainerHeightMobile: calc(
+  100% - #{$appDialogActionsHeight} - #{$headerHeight}
+);
 
 #attribution-container {
   height: $attributionContainerHeightMobile;

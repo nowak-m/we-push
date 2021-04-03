@@ -5,92 +5,96 @@
 $avatarSizeMobile: 4rem;
 $avatarSizeDesktop: 6rem;
 
-app-event-view {
+:host {
   position: absolute;
 
   padding: 1rem;
+}
 
-  mat-card-content {
-    padding: 2rem 0rem;
+.mat-card-content {
+  padding: 2rem 0rem;
 
-    display: flex !important;
-    flex-direction: column;
-    justify-content: space-around;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @media (min-width: $maxMobileWidth) {
+    padding: $cardMarginDesktop;
+  }
+}
+
+p {
+  font-weight: 500;
+
+  span {
+    color: $primaryColor;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+  }
+}
+
+h1 {
+  &:nth-of-type(1) {
+    text-align: end;
+  }
+}
+
+.avatar {
+  width: $avatarSizeMobile;
+  height: $avatarSizeMobile;
+  border-radius: 50%;
+  margin-right: 1rem;
+
+  @media (min-width: $maxMobileWidth) {
+    width: $avatarSizeDesktop;
+    height: $avatarSizeDesktop;
+  }
+}
+
+.activity {
+  width: 100%;
+
+  P {
+    width: 100%;
+    text-align: center;
 
     @media (min-width: $maxMobileWidth) {
-      padding: $cardMarginDesktop;
+      font-size: 1.25rem;
+    }
+
+    &:nth-child(2) {
+      font-size: 1.25rem;
+
+      @media (min-width: $maxMobileWidth) {
+        font-size: 1.5rem;
+      }
     }
   }
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+
+  margin: 1rem 0;
 
   p {
-    font-weight: 500;
-
-    span {
-      color: $primaryColor;
-      font-weight: bold;
-      letter-spacing: 0.05rem;
-    }
-  }
-
-  h1 {
-    &:nth-of-type(1) {
-      text-align: end;
-    }
-  }
-
-  .avatar {
-    width: $avatarSizeMobile;
-    height: $avatarSizeMobile;
-    border-radius: 50%;
-    margin-right: 1rem;
-
     @media (min-width: $maxMobileWidth) {
-      width: $avatarSizeDesktop;
-      height: $avatarSizeDesktop;
+      margin-bottom: 1.5rem;
     }
   }
 
-  .activity {
-    width: 100%;
-
-    P {
-      width: 100%;
-      text-align: center;
-
-      @media (min-width: $maxMobileWidth) {
-        font-size: 1.25rem;
-      }
-
-      &:nth-child(2) {
-        font-size: 1.25rem;
-
-        @media (min-width: $maxMobileWidth) {
-          font-size: 1.5rem;
-        }
-      }
-    }
+  ::ng-deep span {
+    color: $primaryColor;
   }
+}
 
-  .summary {
-    display: flex;
-    align-items: center;
+.mat-card-actions {
+  @extend .app-flex-end;
 
-    margin: 1rem 0;
+  margin: 0 $cardMarginMobile;
 
-    p {
-      @media (min-width: $maxMobileWidth) {
-        margin-bottom: 1.5rem;
-      }
-    }
-  }
-
-  .mat-card-actions {
-    @extend .app-flex-end;
-
-    margin: 0 $cardMarginMobile;
-
-    @media (min-width: $maxMobileWidth) {
-      margin: 0 $cardMarginDesktop;
-    }
+  @media (min-width: $maxMobileWidth) {
+    margin: 0 $cardMarginDesktop;
   }
 }

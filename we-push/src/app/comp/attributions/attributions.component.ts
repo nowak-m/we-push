@@ -23,8 +23,6 @@ export class AttributionsComponent {
     }
   ];
 
-  private sectionSectionMap = new Map<string, AttributionViewData[]>();
-
   attributionSectionNames: string[] = [];
 
   attributionGroups: AttributionViewData[][] = [];
@@ -33,24 +31,29 @@ export class AttributionsComponent {
 
   identifySection;
 
+  private readonly attributionSectionMap = new Map<
+    string,
+    AttributionViewData[]
+  >();
+
   constructor(public dialogRef: MatDialogRef<AttributionsComponent>) {
     this.identifyAttribution = identifyAttribution;
 
     this.identifySection = identifySection;
 
     this.attributions.forEach(attribution => {
-      if (this.sectionSectionMap.has(attribution.section)) {
-        this.sectionSectionMap.get(attribution.section)?.push(attribution);
+      if (this.attributionSectionMap.has(attribution.section)) {
+        this.attributionSectionMap.get(attribution.section)?.push(attribution);
       } else {
-        this.sectionSectionMap.set(attribution.section, [attribution]);
+        this.attributionSectionMap.set(attribution.section, [attribution]);
       }
     });
 
-    this.attributionSectionNames = [...this.sectionSectionMap.keys()];
+    this.attributionSectionNames = [...this.attributionSectionMap.keys()];
 
     this.attributionSectionNames.forEach(sectionName => {
       this.attributionGroups.push(
-        this.sectionSectionMap.get(sectionName) || []
+        this.attributionSectionMap.get(sectionName) || []
       );
     });
   }

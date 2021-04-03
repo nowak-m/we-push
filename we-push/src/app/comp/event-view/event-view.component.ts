@@ -1,4 +1,4 @@
-import { Component, Inject, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { LinkHandler } from 'src/app/shared/link-service.model';
 
 export interface PushEventViewData {
@@ -13,8 +13,7 @@ const identify = (index: number, item: string) => item;
 @Component({
   selector: 'app-event-view',
   templateUrl: './event-view.component.html',
-  styleUrls: ['./event-view.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./event-view.component.scss']
 })
 export class EventViewComponent {
   @Input() data: PushEventViewData = {
