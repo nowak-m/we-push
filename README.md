@@ -1,6 +1,6 @@
 # WePush - motivational app
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/nowak-m/we-push/graphs/commit-activity)
-[![Website cv.lbesson.qc.to](https://img.shields.io/website-up-down-green-red/http/cv.lbesson.qc.to.svg)](https://github.com/nowak-m/we-push)
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://we-push-c7944.web.app)
 
 Simple Angular app demonstrating integration with Github API.
 
