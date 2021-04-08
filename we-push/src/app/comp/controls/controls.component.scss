@@ -10,4 +10,12 @@
   @media (min-width: $maxMobileWidth) {
     flex-direction: row;
   }
+
+  app-action {
+    transition: 0.25s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }
