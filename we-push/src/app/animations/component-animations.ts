@@ -18,10 +18,3 @@ export const flyInOut = trigger('flyInOut', [
     animate(FLY_IN_OUT_TIMING, style({ transform: 'translateX(-100vw)' }))
   ])
 ]);
-
-const ZOOM_IN_TIMING = '250ms ease';
-
-export const zoomIn = trigger('zoomIn', [
-  state('zoom', style({ transform: 'scale(1.1)' })),
-  transition('* <=> *', [animate(ZOOM_IN_TIMING)])
-]);
