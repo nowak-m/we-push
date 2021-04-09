@@ -3,9 +3,14 @@
     [@flyInOut]
     *ngIf="wrapper.sequence % 2; else secondaryView"
     [data]="wrapper.data"
+    (clicked)="onSelect()"
   ></app-event-view>
   <ng-template #secondaryView>
-    <app-event-view [@flyInOut] [data]="wrapper.data"></app-event-view>
+    <app-event-view
+      [@flyInOut]
+      [data]="wrapper.data"
+      (clicked)="onSelect()"
+    ></app-event-view>
   </ng-template>
 </ng-container>
 <ng-template #noEvents>
