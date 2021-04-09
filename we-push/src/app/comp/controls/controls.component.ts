@@ -30,7 +30,7 @@ export class ControlsComponent {
 
   constructor(
     public router: Router,
-    @Inject('LinkHandler') public linkHanlder: LinkHandler
+    @Inject('LinkHandler') public linkHandler: LinkHandler
   ) {
     this.identify = identify;
   }
@@ -41,7 +41,7 @@ export class ControlsComponent {
         this.router.navigate(['display']).catch(error => console.error(error));
         break;
       case 'work':
-        this.linkHanlder.openUrl('github');
+        this.linkHandler.openUrl('github');
         break;
       default:
     }
