@@ -1,5 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
-import { LinkHandler } from 'src/app/shared/link-service.model';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 export interface PushEventViewData {
   avatar: string;
@@ -27,13 +26,15 @@ export class EventViewComponent {
     outro: 'We hope you had a productive day, too!'
   };
 
+  @Output() readonly clicked = new EventEmitter<string>();
+
   identify;
 
-  constructor(@Inject('LinkHandler') public linkHanlder: LinkHandler) {
+  constructor() {
     this.identify = identify;
   }
 
   onClick() {
-    this.linkHanlder.openUrl('github');
+    this.clicked.emit('');
   }
 }

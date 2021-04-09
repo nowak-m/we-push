@@ -7,6 +7,7 @@ import {
   PushEventsService,
   GithubPushEvent
 } from 'src/app/shared/github-api-service.model';
+import { LinkHandler } from 'src/app/shared/link-service.model';
 import {
   MotivationService,
   SummaryData
@@ -51,6 +52,7 @@ export class EventDisplayComponent {
   constructor(
     @Inject('PushEventsService') public pushEventsService: PushEventsService,
     @Inject('MotivationService') public motivationService: MotivationService,
+    @Inject('LinkHandler') public linkHandler: LinkHandler,
     public router: Router
   ) {
     this.event$ = this.pushEventsService.events$.pipe(
@@ -74,5 +76,9 @@ export class EventDisplayComponent {
       finalize(async () => this.router.navigate(['controls'])),
       filter(event => undefined !== event)
     );
+  }
+
+  onSelect() {
+    this.linkHandler.openUrl('github');
   }
 }
